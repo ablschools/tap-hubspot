@@ -1,0 +1,12 @@
+{
+    "type": "object",
+    "properties": {
+        "ticket-id": {
+            "type": ["integer"]
+        },
+        "company-id": {
+            "type": ["integer"]
+        }
+    },
+    "additionalProperties": false
+}

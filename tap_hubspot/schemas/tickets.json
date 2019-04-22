@@ -1,0 +1,1512 @@
+{
+  "type": "object",
+  "properties": {
+    "objectType": {
+      "type": ["null", "string"]
+    },
+    "portalId": {
+      "type": ["null", "integer"]
+    },
+    "objectId": {
+      "type": ["null", "integer"]
+    },
+    "properties": {
+      "type": ["null", "array"],
+        "closed_date": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "created_by": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "number",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "createdate": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "due_date": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "first_agent_reply_date": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_custom_inbox": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "number",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_external_object_ids": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_feedback_last_ces_follow_up": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_feedback_last_ces_rating": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_feedback_last_survey_date": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_file_upload": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_last_email_activity": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_last_email_date": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_lastactivitydate": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_lastcontacted": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_lastmodifieddate": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_merged_object_ids": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_nextactivitydate": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_num_times_contacted": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "number",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_object_id": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "number",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_originating_email_engagement_id": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "number",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_pipeline": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_pipeline_stage": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_resolution": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_ticket_category": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_ticket_id": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "number",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_ticket_priority": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hubspot_owner_assigneddate": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "last_engagement_date": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "last_reply_date": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "nps_follow_up_answer": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "nps_follow_up_question_version": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "number",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "nps_score": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "phase": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "source_thread_id": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "time_to_close": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "number",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "time_to_first_agent_reply": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "number",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "milestones": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "subject": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "content": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "jira_ticket_link": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "source_type": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "source_ref": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "tags": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hubspot_owner_id": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hubspot_team_id": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_all_owner_ids": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_all_team_ids": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        },
+        "hs_all_accessible_team_ids": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "timestamp": {
+              "type": [
+                "null",
+                "string"
+              ],
+              "format": "date-time"
+            },
+            "source": {
+              "type": [
+                "null",
+                "string"
+              ]
+            },
+            "sourceId": {
+              "type": [
+                "null",
+                "string"
+              ]
+            }
+          }
+        }
+    },
+    "isDeleted": {
+      "type": ["null", "boolean"]
+      }
+  }
+}

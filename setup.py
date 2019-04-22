@@ -35,6 +35,7 @@ setup(name='tap-hubspot',
               "owners.json",
               "subscription_changes.json",
               "workflows.json",
+              "tickets.json"
           ],
       },
       include_package_data=True,

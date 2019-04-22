@@ -46,6 +46,7 @@ CHUNK_SIZES = {
 BASE_URL = "https://api.hubapi.com"
 
 CONTACTS_BY_COMPANY = "contacts_by_company"
+COMPANIES_BY_TICKET = "companies_by_ticket"
 
 CONFIG = {
     "access_token": None,
@@ -91,6 +92,11 @@ ENDPOINTS = {
     "forms":                "/forms/v2/forms",
     "workflows":            "/automation/v3/workflows",
     "owners":               "/owners/v2/owners",
+
+    "tickets_properties":   "/properties/v2/tickets/properties",
+    "tickets_all":          "/crm-objects/v1/objects/tickets/paged",
+    "tickets_detail":       "/crm-objects/v1/objects/tickets/{ticket_id}", # not currently used
+    "companies_by_ticket":  "/crm-associations/v1/associations/{ticket_id}/HUBSPOT_DEFINED/26"
 }
 
 def get_start(state, tap_stream_id, bookmark_key):
@@ -111,6 +117,10 @@ def get_field_type_schema(field_type):
         return {"type": ["null", "boolean"]}
 
     elif field_type == "datetime":
+        return {"type": ["null", "string"],
+                "format": "date-time"}
+
+    elif field_type == "date":
         return {"type": ["null", "string"],
                 "format": "date-time"}
 
@@ -165,7 +175,7 @@ def load_associated_company_schema():
 
 def load_schema(entity_name):
     schema = utils.load_json(get_abs_path('schemas/{}.json'.format(entity_name)))
-    if entity_name in ["contacts", "companies", "deals"]:
+    if entity_name in ["contacts", "companies", "deals", "tickets"]:
         custom_schema = get_custom_schema(entity_name)
         schema['properties']['properties'] = {
             "type": "object",
@@ -174,7 +184,6 @@ def load_schema(entity_name):
 
     if entity_name == "contacts":
         schema['properties']['associated-company'] = load_associated_company_schema()
-
     return schema
 
 #pylint: disable=invalid-name
@@ -427,6 +436,76 @@ def sync_companies(STATE, ctx):
                     STATE = _sync_contacts_by_company(STATE, record['companyId'])
 
     STATE = singer.write_bookmark(STATE, 'companies', bookmark_key, utils.strftime(max_bk_value))
+    singer.write_state(STATE)
+    return STATE
+
+default_companies_by_ticket_params = {} # there are no params for this API
+
+# NB> to do: support stream aliasing and field selection
+def _sync_companies_by_ticket(STATE, ticket_id):
+    schema = load_schema(COMPANIES_BY_TICKET)
+
+    url = get_url("companies_by_ticket", ticket_id=ticket_id)
+    path = 'results'
+    with Transformer(UNIX_MILLISECONDS_INTEGER_DATETIME_PARSING) as bumble_bee:
+        with metrics.record_counter(COMPANIES_BY_TICKET) as counter:
+            data = request(url, default_companies_by_ticket_params).json()
+            for row in data[path]:
+                counter.increment()
+                record = {'ticket-id' : ticket_id,
+                          'company-id' : row}
+                record = bumble_bee.transform(record, schema)
+                singer.write_record("companies_by_ticket", record, time_extracted=utils.now())
+
+    return STATE
+
+def sync_tickets(STATE, ctx):
+    catalog = ctx.get_catalog_from_id(singer.get_currently_syncing(STATE))
+    mdata = metadata.to_map(catalog.get('metadata'))
+
+    bookmark_key = 'hs_lastmodifieddate'
+    start = utils.strptime_with_tz(get_start(STATE, "tickets", bookmark_key))
+    max_bk_value = start
+    LOGGER.info("sync_tickets from %s", start)
+    most_recent_modified_time = start
+    params = {'count': 100, # API max 
+              'properties' : []} 
+
+    schema = load_schema("tickets")
+    singer.write_schema("tickets", schema, ["objectId"], [bookmark_key], catalog.get('stream_alias'))
+
+    # Append all the properties fields for deals to the request
+    additional_properties = schema.get("properties").get("properties").get("properties")
+    for key in additional_properties.keys():
+        params['properties'].append(key)
+
+    url = get_url('tickets_all')
+    if COMPANIES_BY_TICKET in ctx.selected_stream_ids:
+        companies_by_ticket_schema = load_schema(COMPANIES_BY_TICKET)
+        singer.write_schema("companies_by_ticket", companies_by_ticket_schema, ["ticket-id", "company-id"])
+
+    with Transformer(UNIX_MILLISECONDS_INTEGER_DATETIME_PARSING) as bumble_bee:
+        for row in gen_request(STATE, 'tickets', url, params, 'objects', "hasMore", ["offset"], ["offset"]):
+            row_properties = row['properties']
+            modified_time = None
+            if bookmark_key in row_properties:
+                # Hubspot returns timestamps in millis
+                timestamp_millis = row_properties[bookmark_key]['timestamp'] / 1000.0
+                modified_time = datetime.datetime.fromtimestamp(timestamp_millis, datetime.timezone.utc)
+            elif 'createdate' in row_properties:
+                # Hubspot returns timestamps in millis
+                timestamp_millis = row_properties['createdate']['timestamp'] / 1000.0
+                modified_time = datetime.datetime.fromtimestamp(timestamp_millis, datetime.timezone.utc)
+            if modified_time and modified_time >= max_bk_value:
+                max_bk_value = modified_time
+
+            if not modified_time or modified_time >= start:
+                record = bumble_bee.transform(row, schema, mdata)
+                singer.write_record("tickets", record, catalog.get('stream_alias'), time_extracted=utils.now())
+                if COMPANIES_BY_TICKET in ctx.selected_stream_ids:
+                    STATE = _sync_companies_by_ticket(STATE, record['objectId'])
+
+    STATE = singer.write_bookmark(STATE, 'tickets', bookmark_key, utils.strftime(max_bk_value))
     singer.write_state(STATE)
     return STATE
 
@@ -741,7 +820,7 @@ STREAMS = [
     Stream('subscription_changes', sync_subscription_changes, ['timestamp', 'portalId', 'recipient'], 'startTimestamp', 'INCREMENTAL'),
     Stream('email_events', sync_email_events, ['id'], 'startTimestamp', 'INCREMENTAL'),
 
-    # Do these last as they are full table
+    # # Do these last as they are full table
     Stream('forms', sync_forms, ['guid'], 'updatedAt', 'FULL_TABLE'),
     Stream('workflows', sync_workflows, ['id'], 'updatedAt', 'FULL_TABLE'),
     Stream('owners', sync_owners, ["ownerId"], 'updatedAt', 'FULL_TABLE'),
@@ -749,6 +828,7 @@ STREAMS = [
     Stream('contact_lists', sync_contact_lists, ["listId"], 'updatedAt', 'FULL_TABLE'),
     Stream('contacts', sync_contacts, ["vid"], 'versionTimestamp', 'FULL_TABLE'),
     Stream('companies', sync_companies, ["companyId"], 'hs_lastmodifieddate', 'FULL_TABLE'),
+    Stream('tickets', sync_tickets, ["objectId"], 'hs_lastmodifieddate', 'FULL_TABLE'),
     Stream('deals', sync_deals, ["dealId"], 'hs_lastmodifieddate', 'FULL_TABLE'),
     Stream('deal_pipelines', sync_deal_pipelines, ['pipelineId'], None, 'FULL_TABLE'),
     Stream('engagements', sync_engagements, ["engagement_id"], 'lastUpdated', 'FULL_TABLE')
@@ -814,7 +894,8 @@ class Context(object):
 
 # stream a is dependent on stream STREAM_DEPENDENCIES[a]
 STREAM_DEPENDENCIES = {
-    CONTACTS_BY_COMPANY: 'companies'
+    CONTACTS_BY_COMPANY: 'companies',
+    COMPANIES_BY_TICKET: 'tickets'
 }
 
 def validate_dependencies(ctx):
@@ -866,6 +947,16 @@ def discover_schemas():
 
     result['streams'].append({'stream': CONTACTS_BY_COMPANY,
                               'tap_stream_id': CONTACTS_BY_COMPANY,
+                              'schema': schema,
+                              'metadata': mdata})
+
+    # Load the companies_by_ticket schema
+    LOGGER.info('Loading schema for companies_by_ticket')
+    companies_by_ticket = Stream('companies_by_ticket', _sync_companies_by_ticket, ['ticket-id', 'company-id'], None, 'FULL_TABLE')
+    schema, mdata = load_discovered_schema(companies_by_ticket)
+
+    result['streams'].append({'stream': COMPANIES_BY_TICKET,
+                              'tap_stream_id': COMPANIES_BY_TICKET,
                               'schema': schema,
                               'metadata': mdata})
 
